@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 
@@ -11,26 +12,25 @@ public class Complexite {
 	
 	public int complexiteCC(){
 		//on commence a 1 pour le chemin principal
-		int res=1;
-		Node n;
-		
+		int res=1;	
 		//parcours du graphe
 		//System.out.println("Node["+origin+"]");
 		LinkedList<Node> queue = new LinkedList<Node>();
 		queue.add(origin);
 		Node cur = null;
-		//System.out.println("size ="+queue.size());
+		ArrayList<Integer> idList = new ArrayList<Integer>();
 		while(queue.size() > 0) {
 			cur = queue.remove();
-		//	System.out.println(cur.toString());	
-			for(Arc arc : cur.getArcs()) {
-				//une instruction sur un arc correspond a une condition
-				if(arc.getLabel() != ""){
-					res ++;
+			if(!idList.contains(cur.getId())){
+				for(Arc arc : cur.getArcs()) {
+					if(arc.getName() != ""){
+						res ++;
+					}
+					queue.add(arc.getNext());
 				}
-				queue.add(arc.getNext());
 			}
-		}	
+			idList.add(cur.getId());		
+		}
 		return res;
 	}
 	
@@ -46,17 +46,18 @@ public class Complexite {
 		LinkedList<Node> queue = new LinkedList<Node>();
 		queue.add(origin);
 		Node cur = null;
-		//System.out.println("size ="+queue.size());
+		ArrayList<Integer> idList = new ArrayList<Integer>();
 		while(queue.size() > 0) {
 			cur = queue.remove();
-		//	System.out.println(cur.toString());	
-			for(Arc arc : cur.getArcs()) {
-				//une instruction sur un arc correspond a une condition
-				if(arc.getLabel() != ""){
-					res = res*resTemp;
+			if(!idList.contains(cur.getId())){
+				for(Arc arc : cur.getArcs()) {
+					if(cur == queue.getLast()){
+						res = res *resTemp;
+					}
+					queue.add(arc.getNext());
 				}
-				queue.add(arc.getNext());
 			}
+			idList.add(cur.getId());		
 		}
 		return res;
 	}

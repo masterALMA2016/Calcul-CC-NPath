@@ -14,8 +14,9 @@ public class App {
 	
 	public static void main(String []args){
 		//System.out.println("Hello World!");
-		Node origin,nA,nB,nC,nD,nE,nF,n;
+		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,n;
 		Arc a;
+		int res = 1;
 
 		
 		/* Example :
@@ -80,7 +81,18 @@ public class App {
 		nD.addArc(a);
 		nE.addArc(a);
 		
+		nG = new Instruction("a=1");
+		a = new Arc("a<10",nG);
+		nF.addArc(a);
 		
+		nH = new Instruction("a=2");
+		a = new Arc("",nH);
+		nF.addArc(a);
+		
+		nI = new Instruction("");
+		a = new Arc("",nI);
+		nG.addArc(a);
+		nH.addArc(a);
 		
 		
 		Complexite comp = new Complexite(origin);
@@ -88,27 +100,9 @@ public class App {
 		System.out.println("NPath: " + comp.complexiteNPath());
 		
 		
-		
-		// Print example
-		System.out.println("Node["+origin+"]");
-		LinkedList<Node> queue = new LinkedList<Node>();
-		queue.add(origin);
-		Node cur = null;
-		System.out.println("size ="+queue.size());
-		while(queue.size() > 0) {
-			cur = queue.remove();
-			System.out.println(cur.toString());	
-			for(Arc arc : cur.getArcs()) {
-				queue.add(arc.getNext());
-				System.out.println("Arc :"+ arc);
-			}
-		}
-		
-		for(int i=0;i<10;i++) {
-			n = new Instruction("inst "+i);
-			System.out.println(n.toString());
-		}
-	
-	}
-		
+
 }
+
+}
+		
+
