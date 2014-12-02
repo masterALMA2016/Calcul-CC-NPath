@@ -25,6 +25,7 @@ public class Complexite {
 			cur = queue.remove();
 			if(!idList.contains(cur.getId())){
 				for(Arc arc : cur.getArcs()) {
+					//on arrive sur une conditon, on ajoute +1
 					if(arc.getName() != ""){
 						res ++;
 					}
