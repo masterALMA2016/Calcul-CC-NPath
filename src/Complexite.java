@@ -44,7 +44,7 @@ public class Complexite {
 	public LinkedList<Node> FinalNode(Node current){
 		LinkedList<Node> res = new LinkedList<Node>();
 		//On continu tant qu'on est pas sur un noeud final
-		do{
+		while((!(current.isFinal()))){
 			//Un nombre d'arc supérieur a un indique une condition
 			if(current.getArcs().size() > 1)
 			{
@@ -67,7 +67,7 @@ public class Complexite {
 				//Si le noeud courant est une instruction on avance au noeud suivant
 				current = current.getArcs().get(0).getNext();
 			}
-		}while(!(current.isFinal()));
+		}
 		if(!(res.contains(current)))
 		{
 			res.add(current);

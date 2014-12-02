@@ -21,7 +21,7 @@ public class App {
 		 * }
 		 * 
 		 */
-	/*	origin = new Instruction("x = 8");
+		origin = new Instruction("x = 8");
 		
 		nA = new Condition();
 		a = new Arc("",nA);
@@ -42,7 +42,7 @@ public class App {
 		nE = new Instruction("y=1");
 		a = new Arc("",nE);
 		nC.addArc(a);
-		
+		/*
 		origin = new Condition();
 		
 		nA = new Instruction("a=1");
@@ -149,7 +149,7 @@ public class App {
 		nN.addArc(a);
 		*/
 		
-		origin = new Condition();
+	/*	origin = new Condition();
 		
 		nA = new Instruction("a=1");
 		a = new Arc("a<10",nA);
@@ -220,7 +220,7 @@ public class App {
 		a = new Arc("",nO);
 		nM.addArc(a);
 		a = new Arc("",nO);
-		nN .addArc(a);
+		nN .addArc(a);*/
 		
 		
 		Complexite comp = new Complexite(origin);
