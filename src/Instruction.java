@@ -1,9 +1,9 @@
 
 
-import java.lang.Integer;
+
 import java.lang.Math;
 import java.lang.String;
-import java.util.LinkedList;
+
 
 /** Class for represent {@code Instruction} node.
  */
@@ -59,7 +59,6 @@ public class Instruction extends Node {
 	 */
 	public Instruction(String name, String value) {
 		super(name);
-<<<<<<< HEAD
 		this.value = value;
 	}
 	
@@ -73,21 +72,6 @@ public class Instruction extends Node {
 		this.value = value;
 	}
 	
-=======
-		this.value = value;
-	}
-	
-	/** Constructs a new {@code Instruction}.
-	 * 
-	 * @param id the id of the new {@code Instruction}. @see fr.univnantes.controlflowgraph.Element#Element(int).
-	 * @param value the value of the new {@code Instruction}.
-	 */
-	public Instruction(int id, String value) {
-		super(id,genNextName());
-		this.value = value;
-	}
-	
->>>>>>> 806c812841db3fafa52403d27b5bed793fcd398a
 	/** Constructs a new {@code Instruction} with a generated name.
 	 * 
 	 * @param value the value of the new {@code Instruction}.

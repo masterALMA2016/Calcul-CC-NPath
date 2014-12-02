@@ -1,11 +1,4 @@
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 /**
  * Hello world!
  *
@@ -14,13 +7,8 @@ public class App {
 	
 	public static void main(String []args){
 		//System.out.println("Hello World!");
-
-		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ,nK,nL,nM,nN,nO,n;
-
+		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ,nK,nL,nM,nN,nO;
 		Arc a;
-		int res = 1;
-
-		
 		/* Example :
 		 * 
 		 * x = 8;
@@ -87,8 +75,8 @@ public class App {
 		
 		*/
 
-		// Structure pdf NPATH = 6
-		origin = new Condition();
+		/* Structure pdf NPATH = 6
+		origin = new Condition("");
 		
 		nA = new Condition("");
 		a = new Arc("a<10",nA);
@@ -121,7 +109,7 @@ public class App {
 		nF.addArc(a);
 		
 		nH = new Instruction("a=3");
-		a = new Arc("",nH);
+		a = new Arc("a<8",nH);
 		nD.addArc(a);
 		
 		nI = new Instruction("a=4");
@@ -141,7 +129,7 @@ public class App {
 		nJ.addArc(a);
 		
 		nL = new Instruction("a=7");
-		a = new Arc("",nL);
+		a = new Arc("b<2",nL);
 		nB.addArc(a);
 		
 		nM = new Instruction("a=8");
@@ -159,8 +147,8 @@ public class App {
 		nK.addArc(a);
 		a = new Arc("",nO);
 		nN.addArc(a);
+		*/
 		
-		/*
 		origin = new Condition();
 		
 		nA = new Instruction("a=1");
@@ -233,7 +221,7 @@ public class App {
 		nM.addArc(a);
 		a = new Arc("",nO);
 		nN .addArc(a);
-		*/
+		
 		
 		Complexite comp = new Complexite(origin);
 		
