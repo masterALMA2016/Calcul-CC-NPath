@@ -14,7 +14,7 @@ public class Complexite {
 	
 	public int complexiteCC(){
 		//on commence a 1 pour le chemin principal
-		int res=1;
+		int res=1;	
 		//parcours du graphe
 		//System.out.println("Node["+origin+"]");
 		LinkedList<Node> queue = new LinkedList<Node>();
@@ -28,14 +28,15 @@ public class Complexite {
 					if(arc.getName() != ""){
 						res ++;
 					}
-				queue.add(arc.getNext());
+					queue.add(arc.getNext());
 				}
 			}
-			idList.add(cur.getId());
+			idList.add(cur.getId());		
 		}
 		return res;
 		}
 	
+
 	/* FinalNode permet de récuperer tout les noeuds de sorties du graphe. Ainsi chaque noeud ne possédant 
 	 * pas de branche ( qui termine donc le programme ) sera ajouté dans une liste de noeuds */
 	 
@@ -73,6 +74,8 @@ public LinkedList<Node> FinalNode(Node current){
 	}
 	return res;
 }
+
+
 /* La fonction CCNPATH permet de calculer la complexite cyclomatique NPATH pour un graphe donne 
  * Elle prend en parametre un entier contenant le resultat (le premier appel ce fait de 0)
  * et un noeud (le premier appel ce fait sur l'origine du graphe)*/

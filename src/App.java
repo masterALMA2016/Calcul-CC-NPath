@@ -14,8 +14,13 @@ public class App {
 	
 	public static void main(String []args){
 		//System.out.println("Hello World!");
+<<<<<<< HEAD
 		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ,nK,nL,nM,nN,nO,n;
+=======
+		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,n;
+>>>>>>> 806c812841db3fafa52403d27b5bed793fcd398a
 		Arc a;
+		int res = 1;
 
 		
 		/* Example :
@@ -82,6 +87,7 @@ public class App {
 		a = new Arc("",nF);
 		nE.addArc(a);
 		
+<<<<<<< HEAD
 		*/
 
 		// Structure pdf NPATH = 6
@@ -90,6 +96,20 @@ public class App {
 		nA = new Condition("");
 		a = new Arc("a<10",nA);
 		origin.addArc(a);
+=======
+		nG = new Instruction("a=1");
+		a = new Arc("a<10",nG);
+		nF.addArc(a);
+		
+		nH = new Instruction("a=2");
+		a = new Arc("",nH);
+		nF.addArc(a);
+		
+		nI = new Instruction("");
+		a = new Arc("",nI);
+		nG.addArc(a);
+		nH.addArc(a);
+>>>>>>> 806c812841db3fafa52403d27b5bed793fcd398a
 		
 		nB = new Condition("");
 		a = new Arc("",nB);
@@ -168,6 +188,7 @@ public class App {
 		a = new Arc("",nB);
 		origin.addArc(a);
 		
+<<<<<<< HEAD
 		nC = new Condition("");
 		a = new Arc("",nC);
 		nA.addArc(a);
@@ -264,4 +285,11 @@ public class App {
 	*/
 	}
 		
+=======
+
+>>>>>>> 806c812841db3fafa52403d27b5bed793fcd398a
 }
+
+}
+		
+
