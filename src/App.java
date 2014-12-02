@@ -222,7 +222,8 @@ public class App {
 		a = new Arc("",nO);
 		nN .addArc(a);*/
 		
-		origin = null;
+		
+		System.out.println("coucou");
 		Complexite comp = new Complexite(origin);
 		
 		System.out.println("CC: " + comp.complexiteCC());
