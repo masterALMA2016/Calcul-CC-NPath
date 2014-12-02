@@ -5,7 +5,7 @@
  */
 public class App {
 	
-	public static void main(String []args){
+	public static void main(String []args) throws Exception{
 		//System.out.println("Hello World!");
 		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ,nK,nL,nM,nN,nO;
 		Arc a;
@@ -222,7 +222,7 @@ public class App {
 		a = new Arc("",nO);
 		nN .addArc(a);*/
 		
-		
+		origin = null;
 		Complexite comp = new Complexite(origin);
 		
 		System.out.println("CC: " + comp.complexiteCC());

@@ -1,12 +1,15 @@
 import static org.junit.Assert.*;
 
+import org.junit.Assert;
+
+
 
 
 public class Test {
 	
-
+	//test sur deux graphes random CC
 	@org.junit.Test
-	public void testCompleciteCC() throws Exception{
+	public void testComplexiteCC() throws Exception{
 		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ,nK,nL,nM,nN,nO;
 		Arc a;
 		
@@ -123,8 +126,9 @@ public class Test {
 		assertEquals(3,comp.complexiteCC());
 	}
 	
+	//test sur deux graphes random complexite NPath
 	@org.junit.Test
-	public void testCompleciteNPath() throws Exception{
+	public void testComplexiteNPath() throws Exception{
 		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ,nK,nL,nM,nN,nO;
 		Arc a;
 		
@@ -203,7 +207,58 @@ public class Test {
 		
 		Complexite comp = new Complexite(origin);
 		assertEquals(32,comp.CCNPATH(0, origin));
+		
+		/* Example :
+		 * 
+		 * x = 8;
+		 * if(x > 8) {
+		 *	  y = 6
+		 * } else if(x == 8 ) {
+		 *	  y = 7
+		 * } else {
+		 *    y = 1;
+		 * }
+		 * 
+		 */
+		origin = new Instruction("x = 8");
+		nA = new Condition();
+		a = new Arc("",nA);
+		origin.addArc(a);
+		
+		nB = new Instruction("y=6");
+		a = new Arc("x>8",nB);
+		nA.addArc(a);
+		
+		nC = new Condition();
+		a = new Arc("",nC);
+		nA.addArc(a);
+		
+		nD = new Instruction("y=7");
+		a = new Arc("x==8",nD);
+		nC.addArc(a);
+		
+		nE = new Instruction("y=1");
+		a = new Arc("",nE);
+		nC.addArc(a);
+		
+		comp = new Complexite(origin);
+		assertEquals(3,comp.CCNPATH(0, origin));
 	}
 	
-
+	//graphe vide + calcul CC
+	@org.junit.Test(expected = Exception.class)
+	public void testComplexiteCCNull() throws Exception{
+		Node origin = null;
+		Complexite comp = new Complexite(origin);
+		comp.complexiteCC();
+	}
+	
+	//graphe vide + calcul complexite NPath
+	@org.junit.Test(expected = Exception.class)
+	public void testComplexiteNPathNull() throws Exception{
+		Node origin = null;
+		Complexite comp = new Complexite(origin);
+		comp.CCNPATH(0, origin);
+	}
+	
 }
