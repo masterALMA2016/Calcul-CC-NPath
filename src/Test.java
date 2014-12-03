@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.LinkedList;
+
 
 public class Test {
 
@@ -164,13 +166,68 @@ public class Test {
 		nN .addArc(a);
 		
 		Complexite comp = new Complexite(origin);
-		assertEquals(32,comp.CCNPATH(0, origin));
+		assertEquals(32,comp.CCNPATH(0, origin,comp.memElem = new LinkedList<Integer>()));
 	}
 	
 	@org.junit.Test
 	public void testCompleciteCCNull() throws Exception{
 		Node origin = null;
 		Complexite comp = new Complexite(origin);
+		
+	}
+	@org.junit.Test
+	public void testWhileCC() throws Exception{
+		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ,nK,nL,nM,nN,nO;
+		Arc a;
+		origin = new Condition();
+		
+		nA = new Instruction("a=1");
+		a = new Arc("a<5",nA);
+		origin.addArc(a);
+		
+		nB = new Instruction("a=2");
+		a = new Arc("",nB);
+		origin.addArc(a);
+		
+		nC = new Condition();
+		a = new Arc("",nC);
+		nA.addArc(a);
+		
+		nD = new Instruction("a=3");
+		a = new Arc("while(a<3)",nD);
+		nC.addArc(a);
+		a = new Arc("",nC);
+		nD.addArc(a);
+		
+		nE = new Instruction("a=4");
+		a = new Arc("",nE);
+		nC.addArc(a);
+		
+		nF = new Instruction("a=5");
+		a = new Arc("",nF);
+		nB.addArc(a);
+		
+		nG = new Condition("");
+		a = new Arc("",nG);
+		nF.addArc(a);
+		
+		nH = new Condition("");
+		a = new Arc("while(a<5)",nH);
+		nG.addArc(a);
+		a = new Arc("",nG);
+		nH.addArc(a);
+		
+		nI = new Instruction("a=8");
+		a = new Arc("while(a<6)",nI);
+		nH.addArc(a);
+		a = new Arc("",nH);
+		nI.addArc(a);
+		
+		nJ = new Instruction("a=9");
+		a = new Arc("",nJ);
+		nG.addArc(a);
+		Complexite comp = new Complexite(origin);
+		assertEquals(5,comp.complexiteCC());
 		
 	}
 }

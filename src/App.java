@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 
 /**
  * Hello world!
@@ -9,71 +11,7 @@ public class App {
 		//System.out.println("Hello World!");
 		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ,nK,nL,nM,nN,nO;
 		Arc a;
-		/* Example :
-		 * 
-		 * x = 8;
-		 * if(x > 8) {
-		 *	  y = 6
-		 * } else if(x == 8 ) {
-		 *	  y = 7
-		 * } else {
-		 *    y = 1;
-		 * }
-		 * 
-		 */
-	/*	origin = new Instruction("x = 8");
-		
-		nA = new Condition();
-		a = new Arc("",nA);
-		origin.addArc(a);
-		
-		nB = new Instruction("y=6");
-		a = new Arc("x>8",nB);
-		nA.addArc(a);
-		
-		nC = new Condition();
-		a = new Arc("",nC);
-		nA.addArc(a);
-		
-		nD = new Instruction("y=7");
-		a = new Arc("x==8",nD);
-		nC.addArc(a);
-		
-		nE = new Instruction("y=1");
-		a = new Arc("",nE);
-		nC.addArc(a);
-		
-		origin = new Condition();
-		
-		nA = new Instruction("a=1");
-		a = new Arc("a<10",nA);
-		origin.addArc(a);
-		
-		nB = new Instruction("a=2");
-		a = new Arc("",nB);
-		origin.addArc(a);
-		
-		nC = new Condition("");
-		a = new Arc("",nC);
-		nA.addArc(a);
-		a = new Arc("",nC);
-		nB.addArc(a);
-		
-		nD = new Instruction("a=3");
-		a = new Arc("a<10",nD);
-		nC.addArc(a);
-		
-		nE = new Instruction("a=4");
-		a = new Arc("",nE);
-		nC.addArc(a);
-		
-		nF = new Instruction("");
-		a = new Arc("",nF);
-		nD.addArc(a);
-		a = new Arc("",nF);
-		nE.addArc(a);
-		
-		*/
+
 
 		/* Structure pdf NPATH = 6
 		origin = new Condition("");
@@ -148,7 +86,7 @@ public class App {
 		a = new Arc("",nO);
 		nN.addArc(a);
 		*/
-		
+		/*
 		origin = new Condition();
 		
 		nA = new Instruction("a=1");
@@ -221,8 +159,55 @@ public class App {
 		nM.addArc(a);
 		a = new Arc("",nO);
 		nN .addArc(a);
+		origin = null;
+		*/
+origin = new Condition();
 		
+		nA = new Instruction("a=1");
+		a = new Arc("a<5",nA);
+		origin.addArc(a);
 		
+		nB = new Instruction("a=2");
+		a = new Arc("",nB);
+		origin.addArc(a);
+		
+		nC = new Condition();
+		a = new Arc("",nC);
+		nA.addArc(a);
+		
+		nD = new Instruction("a=3");
+		a = new Arc("while(a<3)",nD);
+		nC.addArc(a);
+		a = new Arc("",nC);
+		nD.addArc(a);
+		
+		nE = new Instruction("a=4");
+		a = new Arc("",nE);
+		nC.addArc(a);
+		
+		nF = new Instruction("a=5");
+		a = new Arc("",nF);
+		nB.addArc(a);
+		
+		nG = new Condition("");
+		a = new Arc("",nG);
+		nF.addArc(a);
+		
+		nH = new Condition("");
+		a = new Arc("while(a<5)",nH);
+		nG.addArc(a);
+		a = new Arc("",nG);
+		nH.addArc(a);
+		
+		nI = new Instruction("a=8");
+		a = new Arc("while(a<6)",nI);
+		nH.addArc(a);
+		a = new Arc("",nH);
+		nI.addArc(a);
+		
+		nJ = new Instruction("a=9");
+		a = new Arc("",nJ);
+		nG.addArc(a);
 		Complexite comp = new Complexite(origin);
 		
 		System.out.println("CC: " + comp.complexiteCC());
@@ -230,7 +215,7 @@ public class App {
 		{
 			System.out.println(comp.endNodes.get(i).toString());
 		}
-	System.out.println("NPath: " + comp.CCNPATH(0,origin));
+	System.out.println("NPath: " + comp.CCNPATH(0,origin, comp.memElem = new LinkedList<Integer>()));
 		
 	
 		/*
