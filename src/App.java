@@ -7,10 +7,76 @@ import java.util.LinkedList;
  */
 public class App {
 	
-	public static void main(String []args){
+	public static void main(String []args) throws Exception{
 		//System.out.println("Hello World!");
 		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ,nK,nL,nM,nN,nO;
 		Arc a;
+
+		/* Example :
+		 * 
+		 * x = 8;
+		 * if(x > 8) {
+		 *	  y = 6
+		 * } else if(x == 8 ) {
+		 *	  y = 7
+		 * } else {
+		 *    y = 1;
+		 * }
+		 * 
+		 */
+		origin = new Instruction("x = 8");
+		
+		nA = new Condition();
+		a = new Arc("",nA);
+		origin.addArc(a);
+		
+		nB = new Instruction("y=6");
+		a = new Arc("x>8",nB);
+		nA.addArc(a);
+		
+		nC = new Condition();
+		a = new Arc("",nC);
+		nA.addArc(a);
+		
+		nD = new Instruction("y=7");
+		a = new Arc("x==8",nD);
+		nC.addArc(a);
+		
+		nE = new Instruction("y=1");
+		a = new Arc("",nE);
+		nC.addArc(a);
+		/*
+		origin = new Condition();
+		
+		nA = new Instruction("a=1");
+		a = new Arc("a<10",nA);
+		origin.addArc(a);
+		
+		nB = new Instruction("a=2");
+		a = new Arc("",nB);
+		origin.addArc(a);
+		
+		nC = new Condition("");
+		a = new Arc("",nC);
+		nA.addArc(a);
+		a = new Arc("",nC);
+		nB.addArc(a);
+		
+		nD = new Instruction("a=3");
+		a = new Arc("a<10",nD);
+		nC.addArc(a);
+		
+		nE = new Instruction("a=4");
+		a = new Arc("",nE);
+		nC.addArc(a);
+		
+		nF = new Instruction("");
+		a = new Arc("",nF);
+		nD.addArc(a);
+		a = new Arc("",nF);
+		nE.addArc(a);
+		
+		*/
 
 
 		/* Structure pdf NPATH = 6
@@ -86,8 +152,13 @@ public class App {
 		a = new Arc("",nO);
 		nN.addArc(a);
 		*/
+
 		/*
 		origin = new Condition();
+=======
+		
+	/*	origin = new Condition();
+>>>>>>> aa9de778609c3f35f7520d6966b37cd692b5b1dc
 		
 		nA = new Instruction("a=1");
 		a = new Arc("a<10",nA);
@@ -158,11 +229,12 @@ public class App {
 		a = new Arc("",nO);
 		nM.addArc(a);
 		a = new Arc("",nO);
+<<<<<<< HEAD
 		nN .addArc(a);
 		origin = null;
 		*/
-origin = new Condition();
-		
+		origin = new Condition();
+
 		nA = new Instruction("a=1");
 		a = new Arc("a<5",nA);
 		origin.addArc(a);

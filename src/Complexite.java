@@ -8,13 +8,16 @@ public class Complexite {
 	public LinkedList<Node> endNodes;
 	public LinkedList<Integer> memElem;
 	
-	public Complexite(Node origin){
+	public Complexite(Node origin) {
 		this.origin = origin;
 		endNodes = FinalNode(origin,memElem = new LinkedList<Integer>());		
 	}
 	
-	public int complexiteCC(){
-		assert origin != null;
+
+	public int complexiteCC() {
+		if(origin == null){
+			return 0;
+		}
 		//on commence a 1 pour le chemin principal
 		int res=1;	
 		//parcours du graphe
@@ -27,6 +30,7 @@ public class Complexite {
 			cur = queue.remove();
 			if(!idList.contains(cur.getId())){
 				for(Arc arc : cur.getArcs()) {
+					//on arrive sur une conditon, on ajoute +1
 					if(arc.getName() != ""){
 						res ++;
 					}
@@ -43,50 +47,48 @@ public class Complexite {
 	 * pas de branche ( qui termine donc le programme ) sera ajouté dans une liste de noeuds */
 	 
 	
+
 	public LinkedList<Node> FinalNode(Node current,LinkedList<Integer>memElem){
-		assert origin != null;
 		LinkedList<Node> res = new LinkedList<Node>();
-		//On continu tant qu'on est pas sur un noeud final
-		while(!(current.isFinal())){
-			//Un nombre d'arc supérieur a un indique une condition
-			if(current.getArcs().size() > 1)
-			{
-				//On effectue un traitement pour chaque arc partant du noeud courant
-				for(int i = 0 ; i < current.getArcs().size();i++)
-				{
-					if(!(memElem.contains(current.getArcs().get(i).getId()))){
-						memElem.add(current.getArcs().get(i).getId());
-						//On réaplique la fonction pour chaque noeud suivant la condition ( et sur chaque branche de la condition)
-						for(Node r : FinalNode(current.getArcs().get(i).getNext(),memElem))
-						{
-							if(!(res.contains(r)))
-							{
-								res.add(r);
+		if(origin != null){
+			//On continu tant qu'on est pas sur un noeud final
+			while(!(current.isFinal())){
+				//Un nombre d'arc supérieur a un indique une condition
+				if(current.getArcs().size() > 1){
+					//On effectue un traitement pour chaque arc partant du noeud courant
+					for(int i = 0 ; i < current.getArcs().size();i++){
+						if(!(memElem.contains(current.getArcs().get(i).getId()))){
+							memElem.add(current.getArcs().get(i).getId());
+							//On réaplique la fonction pour chaque noeud suivant la condition ( et sur chaque branche de la condition)
+							for(Node r : FinalNode(current.getArcs().get(i).getNext(),memElem)){
+								if(!(res.contains(r))){
+									res.add(r);
+								}
 							}
 						}
 					}
+					return res;
+				}else{
+					//Si le noeud courant est une instruction on avance au noeud suivant
+					current = current.getArcs().get(0).getNext();
 				}
-				return res;
 			}
-			else
-			{
-				//Si le noeud courant est une instruction on avance au noeud suivant
-				current = current.getArcs().get(0).getNext();
+			if(!(res.contains(current))){
+				res.add(current);
 			}
 		}
-		if(!(res.contains(current)))
-		{
-			res.add(current);
-		}
-		return res;
+		return res;	
 	}
 
 
 /* La fonction CCNPATH permet de calculer la complexite cyclomatique NPATH pour un graphe donne 
  * Elle prend en parametre un entier contenant le resultat (le premier appel ce fait de 0)
  * et un noeud (le premier appel ce fait sur l'origine du graphe)*/
+
 	public int CCNPATH(int res, Node current,LinkedList<Integer> memElem){
-		assert origin != null;
+		if(origin == null){
+			return res;
+		}
 		Boolean ok = false;
 	
 		//On boucle tant qu'on ne trouve pas de noeud final ou de condition
