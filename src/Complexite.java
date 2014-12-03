@@ -12,9 +12,9 @@ public class Complexite {
 		endNodes = FinalNode(origin);		
 	}
 	
-	public int complexiteCC() throws Exception{
+	public int complexiteCC() {
 		if(origin == null){
-			throw new Exception("Graphe vide");
+			return 0;
 		}
 		//on commence a 1 pour le chemin principal
 		int res=1;	
@@ -87,9 +87,9 @@ public class Complexite {
 /* La fonction CCNPATH permet de calculer la complexite cyclomatique NPATH pour un graphe donne 
  * Elle prend en parametre un entier contenant le resultat (le premier appel ce fait de 0)
  * et un noeud (le premier appel ce fait sur l'origine du graphe)*/
-	public int CCNPATH(int res, Node current) throws Exception{
+	public int CCNPATH(int res, Node current){
 		if(origin == null){
-			throw new Exception("Graphe vide");
+			return 0;
 		}
 		Boolean ok = false;
 		//On boucle tant qu'on ne trouve pas de noeud final ou de condition

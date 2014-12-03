@@ -246,19 +246,19 @@ public class Test {
 	}
 	
 	//graphe vide + calcul CC
-	@org.junit.Test(expected = Exception.class)
-	public void testComplexiteCCNull() throws Exception{
+	@org.junit.Test
+	public void testComplexiteCCNull(){
 		Node origin = null;
 		Complexite comp = new Complexite(origin);
-		comp.complexiteCC();
+		assertEquals(0,comp.complexiteCC());
 	}
 	
 	//graphe vide + calcul complexite NPath
-	@org.junit.Test(expected = Exception.class)
-	public void testComplexiteNPathNull() throws Exception{
+	@org.junit.Test
+	public void testComplexiteNPathNull(){
 		Node origin = null;
 		Complexite comp = new Complexite(origin);
-		comp.CCNPATH(0, origin);
+		assertEquals(0,comp.CCNPATH(0, origin));
 	}
 	
 	//test d'un graphe contenant switch case
