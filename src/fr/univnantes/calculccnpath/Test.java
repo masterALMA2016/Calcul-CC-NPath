@@ -1,9 +1,9 @@
-import static org.junit.Assert.*;
+package fr.univnantes.calculccnpath;
 
+import static org.junit.Assert.*;
 import java.util.LinkedList;
 
-
-
+import fr.univnantes.controlflowgraph.*;
 
 public class Test {
 	

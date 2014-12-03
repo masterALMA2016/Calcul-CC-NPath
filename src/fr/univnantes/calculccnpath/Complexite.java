@@ -1,6 +1,9 @@
+package fr.univnantes.calculccnpath;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import fr.univnantes.controlflowgraph.*;
 
 public class Complexite {
 
