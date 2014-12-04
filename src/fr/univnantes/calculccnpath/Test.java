@@ -6,11 +6,18 @@ import java.util.LinkedList;
 
 import fr.univnantes.controlflowgraph.*;
 
+/**
+ * Classe de test pour la classe Complexite
+ * @author Alexis Ruchaud & Julien Ouvrard & Muriel Cadiot
+ *
+ */
 public class Test {
 	
-	//test sur deux graphes random CC
+	/**
+	 * Teste la compléxité cyclomatique sur deux graphes random
+	 */
 	@org.junit.Test
-	public void testComplexiteCC() throws Exception{
+	public void testComplexiteCC() {
 		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ,nK,nL,nM,nN,nO;
 		Arc a;
 		
@@ -93,7 +100,7 @@ public class Test {
 		/* Example :
 		 * 
 		 * x = 8;
-		 * if(x > 8)Â {
+		 * if(x > 8) {
 		 *	  y = 6;
 		 * } else if(x == 8 ) {
 		 *	  y = 7;
@@ -127,9 +134,11 @@ public class Test {
 		assertEquals(3,comp.complexiteCC());
 	}
 	
-	//test sur deux graphes random complexite NPath
+	/**
+	 * Teste la compléxité NPath sur deux graphes random
+	 */
 	@org.junit.Test
-	public void testComplexiteNPath() throws Exception{
+	public void testComplexiteNPath() {
 		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ,nK,nL,nM,nN,nO;
 		Arc a;
 		
@@ -214,7 +223,7 @@ public class Test {
 		/* Example :
 		 * 
 		 * x = 8;
-		 * if(x > 8)Â {
+		 * if(x > 8) {
 		 *	  y = 6;
 		 * } else if(x == 8 ) {
 		 *	  y = 7;
@@ -248,16 +257,19 @@ public class Test {
 		assertEquals(3,comp.CCNPATH(0, origin,comp.memElem = new LinkedList<Integer>()));
 	}
 	
-	//graphe vide + calcul CC
+	/**
+	 * Teste la compléxité cyclomatique d'un graphe vide
+	 */
 	@org.junit.Test
 	public void testComplexiteCCNull(){
 		Node origin = null;
 		Complexite comp = new Complexite(origin);
 		assertEquals(0,comp.complexiteCC());
-
 	}
 	
-	//graphe vide + calcul complexite NPath
+	/**
+	 * Teste la compléxité NPath d'un graphe vide
+	 */
 	@org.junit.Test
 	public void testComplexiteNPathNull(){
 		Node origin = null;
@@ -265,9 +277,11 @@ public class Test {
 		assertEquals(0,comp.CCNPATH(0, origin,comp.memElem = new LinkedList<Integer>()));
 	}
 	
-	//test d'un graphe contenant switch case
+	/**
+	 * Teste la compléxité cyclomatique d'un graphe contenant un switch case
+	 */
 	@org.junit.Test
-	public void testComplexiteCCCase() throws Exception {
+	public void testComplexiteCCCase() {
 		
 		/* Example : 
 		 * x=8;
@@ -281,6 +295,7 @@ public class Test {
 		 * }
 		 * y=0
 		 */
+		
 		Node origin,nA,nB,nC,nD,nE,nF,nG;
 		Arc a;
 		
@@ -324,9 +339,11 @@ public class Test {
 		assertEquals(4,comp.complexiteCC());		
 	}
 
-	//test d'un graphe contenant switch case
+	/**
+	 * Teste la compléxité NPath d'un graphe contenant un switch case
+	 */
 	@org.junit.Test
-	public void testComplexiteNPathCase() throws Exception {
+	public void testComplexiteNPathCase() {
 		
 		/* Example : 
 		 * x=8;
@@ -340,6 +357,7 @@ public class Test {
 		 * }
 		 * y=0
 		 */
+		
 		Node origin,nA,nB,nC,nD,nE,nF,nG;
 		Arc a;
 		
@@ -384,8 +402,11 @@ public class Test {
 		
 	}
 
+	/**
+	 * Teste la compléxité cyclomatique d'un graphe contenant un ou plusieurs while
+	 */
 	@org.junit.Test
-	public void testComplexiteCCWhile() throws Exception{
+	public void testComplexiteCCWhile() {
 		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ;
 		Arc a;
 		origin = new Condition();
@@ -440,8 +461,11 @@ public class Test {
 		
 	}
 
+	/**
+	 * Teste le compléxité NPath d'un graphe contenant un ou plusieurs while
+	 */
 	@org.junit.Test
-	public void testComplexiteNPATHWhile() throws Exception{
+	public void testComplexiteNPATHWhile() {
 		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ;
 		Arc a;
 		origin = new Condition();
@@ -496,67 +520,100 @@ public class Test {
 		
 	}
 	
-	//graphe 1 seul noeud + calcul CC
-		@org.junit.Test
-		public void testComplexiteCCSingle(){
-			Node origin;
-			origin = new Instruction("a=1");
-			Complexite comp = new Complexite(origin);
-			assertEquals(1,comp.complexiteCC());
-
-		}
+	/**
+	 * Teste la compléxité cyclomatique d'un graphe composé d'un seul noeud
+	 */
+	@org.junit.Test
+	public void testComplexiteCCSingle(){
 		
-	//graphe 1 seul noeud + calcul complexite NPath
-		@org.junit.Test
-		public void testComplexiteNPathSingle(){
-			Node origin;
-			origin = new Instruction("a=1");
-			Complexite comp = new Complexite(origin);
-			assertEquals(1,comp.CCNPATH(0, origin,comp.memElem = new LinkedList<Integer>()));
-		}
+		/* Example :
+		 * a=1;
+		 */
 		
-	//graphe séquence + calcul CC
-		@org.junit.Test
-		public void testComplexiteCCSequence(){
-			Node origin, nA, nB,nC;
-			Arc a;
-			origin = new Instruction("a=1");
-			nA = new Instruction("y=a+1");
-			a = new Arc("",nA);
-			origin.addArc(a);
-			
-			nB = new Instruction("y=y-3");
-			a = new Arc("",nB);
-			nA.addArc(a);
-			
-			nC = new Instruction("z=2*y");
-			a = new Arc("",nC);
-			nB.addArc(a);
-			
-			Complexite comp = new Complexite(origin);
-			assertEquals(1,comp.complexiteCC());
+		Node origin;
+		origin = new Instruction("a=1");
+		Complexite comp = new Complexite(origin);
+		assertEquals(1,comp.complexiteCC());
+	}
+	
+	/**
+	 * Teste la compléxité NPath d'un graphe composé d'un seul noeud
+	 */
+	@org.junit.Test
+	public void testComplexiteNPathSingle(){
+		
+		/* Example :
+		 * a=1;
+		 */
+		
+		Node origin;
+		origin = new Instruction("a=1");
+		Complexite comp = new Complexite(origin);
+		assertEquals(1,comp.CCNPATH(0, origin,comp.memElem = new LinkedList<Integer>()));
+	}
+	
+	/**
+	 * Teste la compléxité cyclomatique d'un graphe de séquence
+	 */
+	@org.junit.Test
+	public void testComplexiteCCSequence(){
+		
+		/* Example :
+		 * a=1;
+		 * y=a+1;
+		 * y=y-3;
+		 * z=2*y;
+		 */
+		
+		Node origin, nA, nB,nC;
+		Arc a;
+		origin = new Instruction("a=1");
+		nA = new Instruction("y=a+1");
+		a = new Arc("",nA);
+		origin.addArc(a);
+		
+		nB = new Instruction("y=y-3");
+		a = new Arc("",nB);
+		nA.addArc(a);
+		
+		nC = new Instruction("z=2*y");
+		a = new Arc("",nC);
+		nB.addArc(a);
+		
+		Complexite comp = new Complexite(origin);
+		assertEquals(1,comp.complexiteCC());
 
-		}
-			
-	//graphe séquence + calcul complexite NPath
-		@org.junit.Test
-		public void testComplexiteNPathSequence(){
-			Node origin, nA, nB,nC;
-			Arc a;
-			origin = new Instruction("a=1");
-			nA = new Instruction("y=a+1");
-			a = new Arc("",nA);
-			origin.addArc(a);
-			
-			nB = new Instruction("y=y-3");
-			a = new Arc("",nB);
-			nA.addArc(a);
-			
-			nC = new Instruction("z=2*y");
-			a = new Arc("",nC);
-			nB.addArc(a);
-			
-			Complexite comp = new Complexite(origin);
-			assertEquals(1,comp.CCNPATH(0, origin,comp.memElem = new LinkedList<Integer>()));
-		}	
+	}
+		
+	/**
+	 * Teste la compléxité NPath d'un graphe de séquence
+	 */
+	@org.junit.Test
+	public void testComplexiteNPathSequence(){
+		
+		/* Example :
+		 * a=1;
+		 * y=a+1;
+		 * y=y-3;
+		 * z=2*y;
+		 */
+		
+		Node origin, nA, nB,nC;
+		Arc a;
+		origin = new Instruction("a=1");
+		nA = new Instruction("y=a+1");
+		a = new Arc("",nA);
+		origin.addArc(a);
+		
+		nB = new Instruction("y=y-3");
+		a = new Arc("",nB);
+		nA.addArc(a);
+		
+		nC = new Instruction("z=2*y");
+		a = new Arc("",nC);
+		nB.addArc(a);
+		
+		Complexite comp = new Complexite(origin);
+		assertEquals(1,comp.CCNPATH(0, origin,comp.memElem = new LinkedList<Integer>()));
+	}	
 }

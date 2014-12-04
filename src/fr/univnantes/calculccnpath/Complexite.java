@@ -4,19 +4,30 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 import fr.univnantes.controlflowgraph.*;
-
+/**
+ * Classe gérant le calcul des compléxités cyclomatiques et npath
+ * @author Alexis Ruchaud & Julien Ouvrard & Muriel Cadiot
+ *
+ */
 public class Complexite {
 
 	public Node origin;
 	public LinkedList<Node> endNodes;
 	public LinkedList<Integer> memElem;
 	
+	/**
+	 * Constructeur de la classe
+	 * @param origin Noeud d'origine du graphe
+	 */
 	public Complexite(Node origin) {
 		this.origin = origin;
 		endNodes = FinalNode(origin,memElem = new LinkedList<Integer>());		
 	}
 	
-
+	/**
+	 * Calcule la compléxité cyclomatique d'un graphe
+	 * @return res(int) la compléxité cyclomatique
+	 */
 	public int complexiteCC() {
 		if(origin == null){
 			return 0;
@@ -44,25 +55,25 @@ public class Complexite {
 		}
 		return res;
 	}
-	
-
-	/* FinalNode permet de rÃ©cuperer tout les noeuds de sorties du graphe. Ainsi chaque noeud ne possÃ©dant 
-	 * pas de branche ( qui termine donc le programme ) sera ajoutÃ© dans une liste de noeuds */
 	 
-	
-
+	/**
+	 * Permet de récupérer tous les noeuds de sortie du graphe.
+	 * @param current Noeud courrant
+	 * @param memElem Liste
+	 * @return res(LinkedList<Node>) Liste contenant les noeuds ne possédant pas de branche (qui terminent le programme)
+	 */
 	public LinkedList<Node> FinalNode(Node current,LinkedList<Integer>memElem){
 		LinkedList<Node> res = new LinkedList<Node>();
 		if(origin != null){
 			//On continu tant qu'on est pas sur un noeud final
 			while(!(current.isFinal())){
-				//Un nombre d'arc supÃ©rieur a un indique une condition
+				//Un nombre d'arc supérieur a un indique une condition
 				if(current.getArcs().size() > 1){
 					//On effectue un traitement pour chaque arc partant du noeud courant
 					for(int i = 0 ; i < current.getArcs().size();i++){
 						if(!(memElem.contains(current.getArcs().get(i).getId()))){
 							memElem.add(current.getArcs().get(i).getId());
-							//On rÃ©aplique la fonction pour chaque noeud suivant la condition ( et sur chaque branche de la condition)
+							//On réapplique la fonction pour chaque noeud suivant la condition ( et sur chaque branche de la condition)
 							for(Node r : FinalNode(current.getArcs().get(i).getNext(),memElem)){
 								if(!(res.contains(r))){
 									res.add(r);
@@ -87,7 +98,13 @@ public class Complexite {
 /* La fonction CCNPATH permet de calculer la complexite cyclomatique NPATH pour un graphe donne 
  * Elle prend en parametre un entier contenant le resultat (le premier appel ce fait de 0)
  * et un noeud (le premier appel ce fait sur l'origine du graphe)*/
-
+	/**
+	 * Permet de calculer la compléxité cyclomatique NPATH d'un graphe
+	 * @param res La compléxité NPATH (le premier appel se fait avec res=0)
+	 * @param current Noeud courrant (le premier appel se fait sur l'origine du graphe)
+	 * @param memElem
+	 * @return res La compléxité NPATH
+	 */
 	public int CCNPATH(int res, Node current,LinkedList<Integer> memElem){
 		if(origin == null){
 			return res;
