@@ -1,6 +1,7 @@
 package fr.univnantes.calculccnpath;
 
 import static org.junit.Assert.*;
+
 import java.util.LinkedList;
 
 import fr.univnantes.controlflowgraph.*;
@@ -266,7 +267,7 @@ public class Test {
 	
 	//test d'un graphe contenant switch case
 	@org.junit.Test
-	public void testComplexiteCCase() throws Exception {
+	public void testComplexiteCCCase() throws Exception {
 		
 		/* Example : 
 		 * x=8;
@@ -280,7 +281,7 @@ public class Test {
 		 * }
 		 * y=0
 		 */
-		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI;
+		Node origin,nA,nB,nC,nD,nE,nF,nG;
 		Arc a;
 		
 		origin = new Instruction("x=8");
@@ -322,7 +323,7 @@ public class Test {
 		Complexite comp = new Complexite(origin);
 		assertEquals(4,comp.complexiteCC());		
 	}
-	
+
 	//test d'un graphe contenant switch case
 	@org.junit.Test
 	public void testComplexiteNPathCase() throws Exception {
@@ -339,7 +340,7 @@ public class Test {
 		 * }
 		 * y=0
 		 */
-		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI;
+		Node origin,nA,nB,nC,nD,nE,nF,nG;
 		Arc a;
 		
 		origin = new Instruction("x=8");
@@ -384,8 +385,8 @@ public class Test {
 	}
 
 	@org.junit.Test
-	public void testWhileCC() throws Exception{
-		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ,nK,nL,nM,nN,nO;
+	public void testComplexiteCCWhile() throws Exception{
+		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ;
 		Arc a;
 		origin = new Condition();
 		
@@ -440,8 +441,8 @@ public class Test {
 	}
 
 	@org.junit.Test
-	public void testWhileCCNPATH() throws Exception{
-		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ,nK,nL,nM,nN,nO;
+	public void testComplexiteNPATHWhile() throws Exception{
+		Node origin,nA,nB,nC,nD,nE,nF,nG,nH,nI,nJ;
 		Arc a;
 		origin = new Condition();
 		
@@ -494,4 +495,68 @@ public class Test {
 		assertEquals(5,comp.CCNPATH(0,origin,comp.memElem=new LinkedList<Integer>()));
 		
 	}
+	
+	//graphe 1 seul noeud + calcul CC
+		@org.junit.Test
+		public void testComplexiteCCSingle(){
+			Node origin;
+			origin = new Instruction("a=1");
+			Complexite comp = new Complexite(origin);
+			assertEquals(1,comp.complexiteCC());
+
+		}
+		
+	//graphe 1 seul noeud + calcul complexite NPath
+		@org.junit.Test
+		public void testComplexiteNPathSingle(){
+			Node origin;
+			origin = new Instruction("a=1");
+			Complexite comp = new Complexite(origin);
+			assertEquals(1,comp.CCNPATH(0, origin,comp.memElem = new LinkedList<Integer>()));
+		}
+		
+	//graphe séquence + calcul CC
+		@org.junit.Test
+		public void testComplexiteCCSequence(){
+			Node origin, nA, nB,nC;
+			Arc a;
+			origin = new Instruction("a=1");
+			nA = new Instruction("y=a+1");
+			a = new Arc("",nA);
+			origin.addArc(a);
+			
+			nB = new Instruction("y=y-3");
+			a = new Arc("",nB);
+			nA.addArc(a);
+			
+			nC = new Instruction("z=2*y");
+			a = new Arc("",nC);
+			nB.addArc(a);
+			
+			Complexite comp = new Complexite(origin);
+			assertEquals(1,comp.complexiteCC());
+
+		}
+			
+	//graphe séquence + calcul complexite NPath
+		@org.junit.Test
+		public void testComplexiteNPathSequence(){
+			Node origin, nA, nB,nC;
+			Arc a;
+			origin = new Instruction("a=1");
+			nA = new Instruction("y=a+1");
+			a = new Arc("",nA);
+			origin.addArc(a);
+			
+			nB = new Instruction("y=y-3");
+			a = new Arc("",nB);
+			nA.addArc(a);
+			
+			nC = new Instruction("z=2*y");
+			a = new Arc("",nC);
+			nB.addArc(a);
+			
+			Complexite comp = new Complexite(origin);
+			assertEquals(1,comp.CCNPATH(0, origin,comp.memElem = new LinkedList<Integer>()));
+		}	
 }
