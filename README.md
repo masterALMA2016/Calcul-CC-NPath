@@ -14,4 +14,4 @@ Auteurs
 
 Librairie nécessaire
 -----------
-- [Control flow graph](https://github.com/masterALMA2016/control-flow-graph) installed
+- [Control flow graph](https://github.com/masterALMA2016/control-flow-graph) installé
