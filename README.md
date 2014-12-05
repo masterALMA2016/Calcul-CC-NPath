@@ -6,6 +6,12 @@ Module : Vérifications & Tests
 
 But : Calcul de la complexité cyclomatique et du NPath d'un Graphe de Flux de Contrôle.
 
-Plugin nécessaire
-===============
-controle-flow-graph
+Auteurs
+-----------
+- Cadiot Muriel
+- Ouvrard Julien
+- Ruchaud Alexis
+
+Librairie nécessaire
+-----------
+- [Control flow graph](https://github.com/masterALMA2016/control-flow-graph) installed
